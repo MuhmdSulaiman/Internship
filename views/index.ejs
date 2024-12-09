@@ -1,0 +1,29 @@
+<% if (errors && errors.length > 0) { %>
+  <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
+    <ul style="margin: 0; padding: 0; list-style: none;">
+      <% errors.forEach(function (error) { %>
+        <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+
+<% if (message) { %>
+  <div style="color: green; border: 1px solid green; padding: 10px; margin-bottom: 500px; border-radius: 5px;">
+    <ul style="margin: 0; padding: 0; list-style: none;">
+      <li><%= message %></li>
+    </ul>
+  </div>
+<% } %>
+
+<form action="/" method="post" style="width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+  <h1 style="text-align: center; color: #333; margin-bottom: 20px;">Login Page</h1>
+  
+  <label for="username" style="display: block; margin-bottom: 10px; font-weight: bold;">Username:</label>
+  <input type="text" id="username" name="username" placeholder="Enter your username" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+  <label for="password" style="display: block; margin-bottom: 10px; font-weight: bold;">Password:</label>
+  <input type="password" id="class" name="password" placeholder="Enter your password" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;">
+
+  <button type="submit" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Submit</button>
+</form>

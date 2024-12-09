@@ -1,0 +1,20 @@
+<% title = 'Confirm Delete' %>
+<%- include('navbar')%>
+
+<h1 style="text-align: center;">Are you sure you want to delete this employee?</h1>
+
+<div style="text-align: center; margin-bottom: 20px;">
+  <p><strong>Name:</strong> <%= employee.f_name %></p>
+  <p><strong>Email:</strong> <%= employee.f_email %></p>
+  <p><strong>Mobile No:</strong> <%= employee.f_Mobile %></p>
+  <p><strong>Designation:</strong> <%= employee.f_Designation %></p>
+  <p><strong>Gender:</strong> <%= employee.f_gender %></p>
+  <p><strong>Course:</strong> <%= employee.f_course %></p>
+  <p><strong>Creation Date:</strong> <%= employee.f_createdate %></p>
+</div>
+
+<form action="/delete/<%= employee._id %>?_method=DELETE" method="POST" style="text-align: center;">
+  <button type="submit" style="background-color: red; color: white; padding: 10px 20px; border: none; cursor: pointer;">Confirm Delete</button>
+</form>
+
+<a href="/list" style="display: block; text-align: center; margin-top: 10px; color: blue;">Cancel</a>

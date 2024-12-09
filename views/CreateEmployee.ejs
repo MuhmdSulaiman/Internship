@@ -1,0 +1,58 @@
+<% if (error) { %>
+  <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
+    <p style="font-weight: bold;">Error(s):</p>
+    <ul style="margin: 0; padding: 0; list-style: none;">
+      <% Object.values(error).forEach(err => { %>
+        <li><%= err.message %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+ 
+<%- include('navbar')%>
+
+
+
+<form action="/createEmployee" method="post" enctype="multipart/form-data" style="width: 400px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; border-radius: 10px; background: #f9f9f9;">
+  <h2 style="text-align: center; color: #333;">Employee Form</h2>
+  
+  <label for="Img Upload" style="display: block; margin-bottom: 10px; font-weight: bold;">Img Upload:</label>
+  <input type="file" name="f_image" style="display: block; margin-bottom: 15px;">
+
+  <label for="name" style="display: block; margin-bottom: 10px; font-weight: bold;">Name:</label>
+  <input type="text" id="name" name="f_name" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+  <label for="Email" style="display: block; margin-bottom: 10px; font-weight: bold;">Email:</label>
+  <input type="email" id="Email" name="f_email" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+  <label for="Num" style="display: block; margin-bottom: 10px; font-weight: bold;">Mobile No:</label>
+  <input type="text" id="Num" name="f_Mobile" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+  <label for="design" style="display: block; margin-bottom: 10px; font-weight: bold;">Designation:</label>
+  <select id="options" name="f_Designation" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+    <option value="HR">HR</option>
+    <option value="MANAGER">Manager</option>
+    <option value="SALES">Sales</option>
+  </select>
+
+  <label style="display: block; margin-bottom: 10px; font-weight: bold;">Gender:</label>
+  <label style="margin-right: 10px;">
+    <input type="radio" name="f_gender" id="gender" value="Male"> Male
+  </label>
+  <label>
+    <input type="radio" name="f_gender" id="gender" value="Female"> Female
+  </label><br><br>
+
+  <label style="display: block; margin-bottom: 10px; font-weight: bold;">Course:</label>
+  <label style="margin-right: 10px;">
+    <input type="checkbox" name="f_course" value="MCA"> MCA
+  </label>
+  <label style="margin-right: 10px;">
+    <input type="checkbox" name="f_course" value="BCA"> BCA
+  </label>
+  <label>
+    <input type="checkbox" name="f_course" value="BSC"> BSC
+  </label><br><br>
+
+  <button type="submit" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Submit</button>
+</form>

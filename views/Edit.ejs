@@ -1,0 +1,66 @@
+<% if (error) { %>
+  <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 20px; border-radius: 5px; background-color: #ffe5e5;">
+    <p style="font-weight: bold; margin: 0;">Error(s):</p>
+    <ul style="margin: 5px 0; padding: 0; list-style-type: disc;">
+      <% Object.values(error).forEach(err => { %>
+        <li style="margin-left: 20px;"><%= err.message %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+
+
+<%- include('navbar')%>
+
+
+<form action="/edit/<%= employee._id %>" method="post" enctype="application/x-www-form-urlencoded" 
+      style="width: 500px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+  <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Edit Employee</h2>
+  
+  <label for="Img Upload" style="display: block; margin-bottom: 10px; font-weight: bold;">Upload Image:</label>
+  <input type="file" name="f_image" style="margin-bottom: 20px;"><br>
+
+  <label for="name" style="display: block; margin-bottom: 10px; font-weight: bold;">Name:</label>
+  <input type="text" id="name" name="f_name" value="<%= employee.f_name %>" 
+         style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;">
+
+  <label for="Email" style="display: block; margin-bottom: 10px; font-weight: bold;">Email:</label>
+  <input type="email" id="Email" name="f_email" value="<%= employee.f_email %>" 
+         style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;">
+
+  <label for="Num" style="display: block; margin-bottom: 10px; font-weight: bold;">Mobile No:</label>
+  <input type="text" id="Num" name="f_Mobile" value="<%= employee.f_Mobile %>" 
+         style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;">
+
+  <label for="design" style="display: block; margin-bottom: 10px; font-weight: bold;">Designation:</label>
+  <select id="options" name="f_Designation" 
+          style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;">
+    <option value="HR" <%= employee.f_Designation === 'HR' ? 'selected' : '' %>>HR</option>
+    <option value="Manager" <%= employee.f_Designation === 'Manager' ? 'selected' : '' %>>Manager</option>
+    <option value="Sales" <%= employee.f_Designation === 'Sales' ? 'selected' : '' %>>Sales</option>
+  </select>
+
+  <label style="display: block; margin-bottom: 10px; font-weight: bold;">Gender:</label>
+  <label style="margin-right: 20px;">
+    <input type="radio" name="f_gender" value="Male" <%= employee.f_gender === 'Male' ? 'checked' : '' %>> Male
+  </label>
+  <label>
+    <input type="radio" name="f_gender" value="Female" <%= employee.f_gender === 'Female' ? 'checked' : '' %>> Female
+  </label><br><br>
+
+  <label style="display: block; margin-bottom: 10px; font-weight: bold;">Courses:</label>
+  <label style="margin-right: 20px;">
+    <input type="checkbox" name="f_course" value="MCA" <%= Array.isArray(employee.f_course) && employee.f_course.includes('MCA') ? 'checked' : '' %>> MCA
+  </label>
+  <label style="margin-right: 20px;">
+    <input type="checkbox" name="f_course" value="BCA" <%= Array.isArray(employee.f_course) && employee.f_course.includes('BCA') ? 'checked' : '' %>> BCA
+  </label>
+  <label>
+    <input type="checkbox" name="f_course" value="BSC" <%= Array.isArray(employee.f_course) && employee.f_course.includes('BSC') ? 'checked' : '' %>> BSC
+  </label><br><br>
+
+  <button type="submit" 
+          style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+    Update
+  </button>
+</form>
